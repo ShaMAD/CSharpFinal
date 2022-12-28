@@ -8,8 +8,6 @@
 //[“1234”, “1567”, “-2”, “computer science”] → [“-2”]
 //[“Russia”, “Denmark”, “Kazan”] → []
 
-using System.Reflection.Metadata;
-
 namespace CSharpFinal
 {
     internal class Program
@@ -31,7 +29,7 @@ namespace CSharpFinal
 
             //ручной способ
             string[] fullManualSmallArray = FullManualTrimToLength(myArray, 3);
-            PrintStringArray(fullManualSmallArray,"Полностью ручной перебор:     ");
+            PrintStringArray(fullManualSmallArray, "Полностью ручной перебор:     ");
 
             //рекурсивный способ
             string[] recurseArray = RecurseTrimToLength(myArray, 3, myArray.Length).Split(' ');
@@ -48,13 +46,13 @@ namespace CSharpFinal
         /// <returns>Сокращенный массив</returns>
         static string[] ResizeTrimToLength(string[] array, int maxstringlength)
         {
-            string[] smallArray= new string[0];
+            string[] smallArray = new string[0];
 
             for (int i = 0, j = 0; i < array.Length; i++)
                 if (array[i].Length <= maxstringlength)
                 {
                     Array.Resize(ref smallArray, ++j);
-                    smallArray[j-1] = array[i];
+                    smallArray[j - 1] = array[i];
                 }
             return smallArray;
         }
@@ -69,35 +67,35 @@ namespace CSharpFinal
         {
             uint[] indexesArray = new uint[array.Length];
             uint indexCounter = 0;
-            
+
             for (uint i = 0; i < array.Length; i++)
                 if (array[i].Length <= maxstringlength)
                     indexesArray[indexCounter++] = i;
-            
+
             string[] returnArrray = new string[indexCounter];
 
             for (int i = 0; i < indexCounter; i++)
                 returnArrray[i] = array[indexesArray[i]];
-            
+
             return returnArrray;
         }
 
         /// <summary>
-        /// 
+        /// Рекурсивный поиск элементов массива
         /// </summary>
         /// <param name="array">Массив строк</param>
         /// <param name="maxstringlength">Количество символов на выходе</param>
         /// <param name="len">Длинна массива</param>
         /// <param name="text">Строка для сборки текста</param>
         /// <param name="pos">Позиция в массиве</param>
-        /// <returns>Сокращенный массив</returns>
-        static string RecurseTrimToLength(string[] array, uint maxstringlength, int len, string text = "", uint pos=0)
-        { 
-            if (pos == len) 
+        /// <returns>Строка с подходящими элементами через пробел</returns>
+        static string RecurseTrimToLength(string[] array, uint maxstringlength, int len, string text = "", uint pos = 0)
+        {
+            if (pos == len)
                 return text;
-            return (array[pos].Length <= maxstringlength) ? 
-                RecurseTrimToLength(array,maxstringlength, len, text + array[pos] + " ", ++pos) :
-                RecurseTrimToLength(array,maxstringlength,len, text, ++pos);
+            return (array[pos].Length <= maxstringlength) ?
+                RecurseTrimToLength(array, maxstringlength, len, text + array[pos] + " ", ++pos) :
+                RecurseTrimToLength(array, maxstringlength, len, text, ++pos);
         }
 
         /// <summary>
@@ -109,7 +107,7 @@ namespace CSharpFinal
         {
             Console.Write(text);
             for (uint i = 0; i < array.Length; i++)
-                Console.Write(array[i]+" ");
+                Console.Write(array[i] + " ");
             Console.WriteLine();
         }
 
