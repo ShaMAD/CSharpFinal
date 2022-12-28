@@ -76,7 +76,7 @@ namespace CSharpFinal
             
             string[] returnArrray = new string[indexCounter];
 
-            for (int i = 0; i < returnArrray.Length; i++)
+            for (int i = 0; i < indexCounter; i++)
                 returnArrray[i] = array[indexesArray[i]];
             
             return returnArrray;
